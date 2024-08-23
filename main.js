@@ -24,6 +24,8 @@ startBtn.addEventListener("click", () => {
 });
 
 offlineBtn.addEventListener("click", () => {
+    clearInterval(blinkY); // Finalizar intervalos previos.
+    red.classList.remove("red-on"); // Apagar la luz roja.
     blinkY = setInterval(()=>{ // Iniciar un intervalo de parpadeo que se ejecuta cada cierto tiempo.
         yellow.classList.toggle("yellow-on"); // Parpadear la luz amarilla.
     },750); // Tres cuartos de segundo.
