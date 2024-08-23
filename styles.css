@@ -76,9 +76,13 @@ body {
 }
 .start {
     top: 640px;
-    left: 60px;
+    left: 35px;
 }
 .offline {
     top: 640px;
-    left: 160px;
+    left: 110px;
+}
+.end {
+    top: 640px;
+    left: 182px;
 }
