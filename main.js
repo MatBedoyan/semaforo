@@ -4,9 +4,12 @@
 
 // ****** Selectores: ******
 
-const red = document.querySelector(".red");
-const yellow = document.querySelector(".yellow");
-const green = document.querySelector(".green");
+const red1 = document.querySelector(".red1");
+const yellow1 = document.querySelector(".yellow1");
+const green1 = document.querySelector(".green1");
+const red2 = document.querySelector(".red2");
+const yellow2 = document.querySelector(".yellow2");
+const green2 = document.querySelector(".green2");
 
 const startBtn = document.querySelector(".start");
 const endBtn = document.querySelector(".end");
@@ -19,14 +22,21 @@ const offlineBtn = document.querySelector(".offline");
 
 // ****** Variables: ******
 
-let redOn = null;
-let yellowOn = null;
-let greenOn = null;
+let redOn1 = null;
+let yellowOn1 = null;
+let greenOn1 = null;
+let redOn2 = null;
+let yellowOn2 = null;
+let greenOn2 = null;
 
-let redYellowOn = null;
+let redYellowOn1 = null;
+let greenBlinkOn1 = null;
+let redYellowOn2 = null;
+let greenBlinkOn2 = null;
 
 let blinkY = null;
-let blinkG = null;
+let blinkG1 = null;
+let blinkG2 = null;
 
 
 // =======================================================================
@@ -35,68 +45,112 @@ let blinkG = null;
 // ****** Funciones: ******
 
 const clearAll = ()=>{ // Declaración e inicialización de la función para limpiar y apagar todo.
-    clearInterval(blinkY); // Finalizar el intervalo de parpadeo de la luz amarilla.
-    red.classList.remove("red-on"); // ...apagar la luz roja.
-    yellow.classList.remove("yellow-on"); // ...apagar la luz amarilla.
-    green.classList.remove("green-on"); // ...apagar la luz verde.
+    clearInterval(blinkY); // Finalizar el intervalo de parpadeo de las luces amarillas de ambos módulos.
+    clearInterval(blinkG1); // Finalizar el intervalo de parpadeo de la luz verde del módulo 1.
+    clearInterval(blinkG2); // Finalizar el intervalo de parpadeo de la luz verde del módulo 2.
+    red1.classList.remove("red-on"); // ...apagar la luz roja del módulo 1.
+    yellow1.classList.remove("yellow-on"); // ...apagar la luz amarilla del módulo 1.
+    green1.classList.remove("green-on"); // ...apagar la luz verde del módulo 1.
+    red2.classList.remove("red-on"); // ...apagar la luz roja del módulo 2.
+    yellow2.classList.remove("yellow-on"); // ...apagar la luz amarilla del módulo 2.
+    green2.classList.remove("green-on"); // ...apagar la luz verde del módulo 2.
 };
 
-const blinkingYellow = ()=>{ // Declaración e inicialización de la función para parpadear la luz amarilla.
-    clearAll(); // Por las dudas, limpiar todos los intervalos y apagar todas las luces.
-    blinkY = setInterval(()=>{ // Iniciar un intervalo de parpadeo que se ejecuta cada cierto tiempo.
-        yellow.classList.toggle("yellow-on"); // Parpadear la luz amarilla.
+const blinkingYellow = ()=>{ // Declaración e inicialización de la función para parpadear la luz amarilla de ambos módulos.
+    clearAll(); // Limpiar todos los intervalos y apagar todas las luces de ambos módulos.
+    blinkY = setInterval(()=>{ // Iniciar un intervalo de parpadeo para las luces amarillas de ambos módulos que se ejecuta cada cierto tiempo.
+        yellow1.classList.toggle("yellow-on"); // Parpadear la luz amarilla del módulo 1.
+        yellow2.classList.toggle("yellow-on"); // Parpadear la luz amarilla del módulo 2.
     },750); // Tres cuartos de segundo.
 };
 
-const blinkingGreen = () => { // Declaración e inicialización de la función para parpadear la luz verde.
-    blinkG = setInterval(()=>{ // Iniciar un intervalo de parpadeo que se ejecuta cada cierto tiempo.
-        green.classList.toggle("green-on"); // Parpadear la luz verde.
+const blinkingGreen1 = () => { // Declaración e inicialización de la función para parpadear la luz verde del módulo 1.
+    blinkG1 = setInterval(()=>{ // Iniciar un intervalo de parpadeo de la luz verde del módulo 1 que se ejecuta cada cierto tiempo.
+        green1.classList.toggle("green-on"); // Parpadear la luz verde del módulo 1.
     },500); // Medio segundo.
-    greenBlinkOn = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear la finalización del encendido de la luz roja.
-        clearInterval(blinkG);
-        green.classList.remove("green-on"); // Apagar la luz verde.
-        yellow.classList.add("yellow-on"); // Encender la luz amarilla.
+    greenBlinkOn1 = setTimeout(()=>{ // Iniciar un intervalo de parpadeo para la luz verde del módulo 1 que se ejecuta cada cierto tiempo.
+        clearInterval(blinkG1); // Finalizar el intervalo de parpadeo de la luz verde del módulo 1.
+        green1.classList.remove("green-on"); // Apagar la luz verde del módulo 1.
+        yellow1.classList.add("yellow-on"); // Encender la luz amarilla del módulo 1.
     },2000); // Se ejecuta a los 10 segundos.
 };
 
-const testLights = ()=>{ // Declaración e inicialización de la función para probar que funcionen todas las luces.
-    clearAll(); // Por las dudas, limpiar todos los intervalos y apagar todas las luces.
-    const test = setInterval(()=>{ // Setea un intervalo para parpadear las 3 luces cada cierto tiempo.
-        red.classList.toggle("red-on"); // Parpadear la luz roja.
-        yellow.classList.toggle("yellow-on"); // Parpadear la luz amarilla.
-        green.classList.toggle("green-on"); // Parpadear la luz verde.
+const blinkingGreen2 = () => { // Declaración e inicialización de la función para parpadear la luz verde del módulo 2.
+    blinkG2 = setInterval(()=>{ // Iniciar un intervalo de parpadeo de la luz verde del módulo 2 que se ejecuta cada cierto tiempo.
+        green2.classList.toggle("green-on"); // Parpadear la luz verde del módulo 2.
+    },500); // Medio segundo.
+    greenBlinkOn2 = setTimeout(()=>{ // Iniciar un intervalo de parpadeo para la luz verde del módulo 2 que se ejecuta cada cierto tiempo.
+        clearInterval(blinkG2); // Finalizar el intervalo de parpadeo de la luz verde del módulo 2.
+        green2.classList.remove("green-on"); // Apagar la luz verde del módulo 2.
+        yellow2.classList.add("yellow-on"); // Encender la luz amarilla del módulo 2.
+    },2000); // Se ejecuta a los 10 segundos.
+};
+
+const testLights = ()=>{ // Declaración e inicialización de la función para probar que funcionen todas las luces de ambos módulos.
+    clearAll(); // Limpiar todos los intervalos y apagar todas las luces de ambos módulos.
+    const test = setInterval(()=>{ // Setea un intervalo para parpadear todas las luces de ambos módulos cada cierto tiempo.
+        red1.classList.toggle("red-on"); // Parpadear la luz roja del módulo 1.
+        yellow1.classList.toggle("yellow-on"); // Parpadear la luz amarilla del módulo 1.
+        green1.classList.toggle("green-on"); // Parpadear la luz verde del módulo 1.
+        red2.classList.toggle("red-on"); // Parpadear la luz roja del módulo 2.
+        yellow2.classList.toggle("yellow-on"); // Parpadear la luz amarilla del módulo 2.
+        green2.classList.toggle("green-on"); // Parpadear la luz verde del módulo 2.
     },250); // Un cuarto de segundo.
     setTimeout(() => { // Finalizado ese cierto tiempo...
         clearInterval(test); // ...apagar los parpadeos recientes...
-        red.classList.remove("red-on"); // ...y la luz roja,...
-        yellow.classList.remove("yellow-on"); // ...la luz amarilla,...
-        green.classList.remove("green-on"); // ...y la luz verde.
+        red1.classList.remove("red-on"); // ...y la luz roja del módulo 1.,...
+        yellow1.classList.remove("yellow-on"); // ...la luz amarilla del módulo 1...
+        green1.classList.remove("green-on"); // ...y la luz verde del módulo 1...
+        red2.classList.remove("red-on"); // ...y la luz roja del módulo 2...
+        yellow2.classList.remove("yellow-on"); // ...la luz amarilla del módulo 2...
+        green2.classList.remove("green-on"); // ...y la luz verde del módulo 2.
     },1000); // 1 segundo.
 }
 
 const trafficLights = ()=>{  // Función para ejecutar el programa del semáforo. ***EN PROCESO***
-    clearAll(); // Por las dudas, limpiar todos los intervalos y apagar todas las luces.
-    red.classList.add("red-on"); // Encender la luz roja.
-    redYellowOn = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear el encendido de la luz amarilla para quedar encendida en simultáneo con la luz roja.
-        yellow.classList.add("yellow-on"); // Encender la luz amarilla.
+    clearAll(); // Limpiar todos los intervalos y apagar todas las luces de ambos módulos.
+    red1.classList.add("red-on"); // Encender la luz roja del módulo 1.
+    red2.classList.add("red-on"); // Encender la luz roja del módulo 2.
+    redYellowOn1 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 1 el encendido de la luz amarilla para quedar encendida en simultáneo con la luz roja.
+        yellow1.classList.add("yellow-on"); // Encender la luz amarilla del módulo 1.
     },3000); // Se ejecuta a los 3 segundos de iniciada la función.
-    greenOn = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear la finalización del encendido de las luces roja y amarilla y encender la luz verde.
-        red.classList.remove("red-on"); // Apagar la luz roja.
-        yellow.classList.remove("yellow-on"); // Apagar la luz amarilla.
-        green.classList.add("green-on"); // Encender la luz verde.
+    greenOn1 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 1 la finalización del encendido de las luces roja y amarilla y encender la luz verde.
+        red1.classList.remove("red-on"); // Apagar la luz roja del módulo 1.
+        yellow1.classList.remove("yellow-on"); // Apagar la luz amarilla del módulo 1.
+        green1.classList.add("green-on"); // Encender la luz verde del módulo 1.
     },5000); // Se ejecuta a los 5 segundos de iniciada la función, es decir, 2 segundos de la acción anterior.
-    greenBlinkOn = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear la finalización del encendido de la luz verde e iniciar su parpadeo.
-        green.classList.remove("green-on"); // Apagar la luz verde.
-        blinkingGreen(); // Ejecutar la función para parpadear la luz verde.
+    greenBlinkOn1 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 1 la finalización del encendido de la luz verde e iniciar su parpadeo.
+        green1.classList.remove("green-on"); // Apagar la luz verde del módulo 1.
+        blinkingGreen1(); // Ejecutar la función para parpadear la luz verde del módulo 1.
     },8000); // Se ejecuta a los 8 segundos de iniciada la función, es decir, 3 segundos de la acción anterior.
-    yellowOn = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear la finalización del parpadeo de la luz verde y encender la luz amarilla.
-        green.classList.remove("green-on"); // Apagar la luz verde.
-        yellow.classList.add("yellow-on"); // Encender la luz amarilla.
+    yellowOn1 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 1 la finalización del parpadeo de la luz verde y encender la luz amarilla.
+        green1.classList.remove("green-on"); // Apagar la luz verde del módulo 1.
+        yellow1.classList.add("yellow-on"); // Encender la luz amarilla del módulo 1.
     },10000); // Se ejecuta a los 10 segundos de iniciada la función, es decir, 2 segundos de la acción anterior.
-    redOn = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear el apagado de la luz amarilla y encender la luz roja.
-        yellow.classList.remove("yellow-on"); // Apagar la luz amarilla.
-        red.classList.add("red-on"); // Encender la luz roja.
+    redOn1 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 1 el apagado de la luz amarilla y encender la luz roja.
+        yellow1.classList.remove("yellow-on"); // Apagar la luz amarilla.
+        red1.classList.add("red-on"); // Encender la luz roja del módulo 1.
     },13000); // Se ejecuta a los 13 segundos de iniciada la función, es decir, 3 segundos de la acción anterior.
+    redYellowOn2 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 2 el encendido de la luz amarilla para quedar encendida en simultáneo con la luz roja.
+        yellow2.classList.add("yellow-on"); // Encender la luz amarilla del módulo 2.
+    },15000); // Se ejecuta a los 3 segundos de iniciada la función.
+    greenOn2 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 2 la finalización del encendido de las luces roja y amarilla y encender la luz verde.
+        red2.classList.remove("red-on"); // Apagar la luz roja del módulo 2.
+        yellow2.classList.remove("yellow-on"); // Apagar la luz amarilla del módulo 2.
+        green2.classList.add("green-on"); // Encender la luz verde del módulo 2.
+    },18000); // Se ejecuta a los 5 segundos de iniciada la función, es decir, 2 segundos de la acción anterior.
+    greenBlinkOn2 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 2 la finalización del encendido de la luz verde e iniciar su parpadeo.
+        green2.classList.remove("green-on"); // Apagar la luz verde del módulo 2.
+        blinkingGreen2(); // Ejecutar la función para parpadear la luz verde del módulo 2.
+    },20000); // Se ejecuta a los 8 segundos de iniciada la función, es decir, 3 segundos de la acción anterior.
+    yellowOn2 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 2 la finalización del parpadeo de la luz verde y encender la luz amarilla.
+        green2.classList.remove("green-on"); // Apagar la luz verde del módulo 2.
+        yellow2.classList.add("yellow-on"); // Encender la luz amarilla del módulo 2.
+    },23000); // Se ejecuta a los 10 segundos de iniciada la función, es decir, 2 segundos de la acción anterior.
+    redOn2 = setTimeout(()=>{ // Luego de cierto tiempo de iniciada la función, setear en el módulo 2 el apagado de la luz amarilla y encender la luz roja.
+        yellow2.classList.remove("yellow-on"); // Apagar la luz amarilla del módulo 2.
+        red2.classList.add("red-on"); // Encender la luz roja del módulo 2.
+    },25000); // Se ejecuta a los 13 segundos de iniciada la función, es decir, 3 segundos de la acción anterior.
 }
 
 

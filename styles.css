@@ -26,6 +26,16 @@ body {
     --green-off-diffuse: #121;
 }
 
+.traffic-lights {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    gap: 4rem;
+    width: 30rem;
+    height: 36rem;
+    border: 2px solid var(--dark-col);
+}
 .module {
     display: flex;
     flex-direction: column;
@@ -34,16 +44,13 @@ body {
     width: 12rem;
     height: 35rem;
     gap: 1rem;
-    margin: 3rem;
+    padding: 1rem;
     background: var(--dark-col);
 }
 .module__light {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 10rem;
     height: 10rem;
+    padding: .6rem 0;
     border-radius: 50%;
     background: var(--grey);
 }
@@ -55,25 +62,33 @@ body {
     border-radius: 50%;
 }
 
-.red {
+.red1, .red2 {
     background: radial-gradient(var(--red-off),var(--dark-col));
 }
 .red-on {
     background: radial-gradient(var(--red-on),var(--red-on-diffuse));
 }
-.yellow {
+.yellow1, .yellow2 {
     background: radial-gradient(var(--yellow-off),var(--dark-col));
 }
 .yellow-on {
     background: radial-gradient(var(--yellow-on),var(--yellow-on-diffuse));
 }
-.green {
+.green1, .green2 {
     background: radial-gradient(var(--green-off),var(--dark-col));
 }
 .green-on {
     background: radial-gradient(var(--green-on),var(--green-on-diffuse));
 }
 
+.commands {
+    position: relative;
+    top: 580px;
+    left: 90px;
+    width: 300px;
+    height: 110px;
+    border: 2px solid var(--dark-col);
+}
 .btn {
     position: absolute;
     padding: .5rem .8rem;
@@ -81,18 +96,18 @@ body {
     cursor: pointer;
 }
 .start {
-    top: 615px;
+    top: 10px;
     left: 50px;
 }
 .offline {
-    top: 615px;
+    top: 10px;
     left: 180px;
 }
 .test {
-    top: 655px;
+    top: 60px;
     left: 50px;
 }
 .end {
-    top: 655px;
+    top: 60px;
     left: 180px;
 }

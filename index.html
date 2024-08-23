@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semáforo: Paso 7</title>
+    <title>Semáforo: Paso 8</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="module">
-        <div class="module__light">
-            <div class="light red"></div>
+    <div class="traffic-lights">
+        <div class="module">
+            <div class="module__light">
+                <div class="light red1"></div>
+            </div>
+            <div class="module__light">
+                <div class="light yellow1"></div>
+            </div>
+            <div class="module__light">
+                <div class="light green1"></div>
+            </div>
         </div>
-        <div class="module__light">
-            <div class="light yellow"></div>
-        </div>
-        <div class="module__light">
-            <div class="light green"></div>
+        <div class="module">
+            <div class="module__light">
+                <div class="light red2"></div>
+            </div>
+            <div class="module__light">
+                <div class="light yellow2"></div>
+            </div>
+            <div class="module__light">
+                <div class="light green2"></div>
+            </div>
         </div>
     </div>
-    <button class="btn start">Iniciar</button>
-    <button class="btn offline">Titilar</button>
-    <button class="btn test">Probar</button>
-    <button class="btn end">Apagar</button>
+    <div class="commands">
+        <button class="btn start">Iniciar</button>
+        <button class="btn offline">Titilar</button>
+        <button class="btn test">Probar</button>
+        <button class="btn end">Apagar</button>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
