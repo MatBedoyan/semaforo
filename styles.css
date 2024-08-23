@@ -68,11 +68,17 @@ body {
     background: var(--green-on);
 }
 
-.btn-start {
+.btn {
     position: absolute;
-    top: 640px;
-    left: 110px;
     padding: .5rem .8rem;
     font-size: .8rem;
     cursor: pointer;
+}
+.start {
+    top: 640px;
+    left: 60px;
+}
+.offline {
+    top: 640px;
+    left: 160px;
 }
