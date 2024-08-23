@@ -12,12 +12,18 @@ body {
     --white: #fff;
     --grey: #777;
     --dark-col: #333;
-    --red-on: #f00;
+    --red-on: #f00a;
+    --red-on-diffuse: #a00;
     --red-off: #400;
-    --yellow-on: #fc0;
+    --red-off-diffuse: #100;
+    --yellow-on: #fc0a;
+    --yellow-on-diffuse: #c80;
     --yellow-off: #540;
-    --green-on: #2c2;
+    --yellow-off-diffuse: #320;
+    --green-on: #2c2a;
+    --green-on-diffuse: #080;
     --green-off: #243;
+    --green-off-diffuse: #121;
 }
 
 .module {
@@ -50,22 +56,22 @@ body {
 }
 
 .red {
-    background: var(--red-off);
+    background: radial-gradient(var(--red-off),var(--dark-col));
 }
 .red-on {
-    background: var(--red-on);
+    background: radial-gradient(var(--red-on),var(--red-on-diffuse));
 }
 .yellow {
-    background: var(--yellow-off);
+    background: radial-gradient(var(--yellow-off),var(--dark-col));
 }
 .yellow-on {
-    background: var(--yellow-on);
+    background: radial-gradient(var(--yellow-on),var(--yellow-on-diffuse));
 }
 .green {
-    background: var(--green-off);
+    background: radial-gradient(var(--green-off),var(--dark-col));
 }
 .green-on {
-    background: var(--green-on);
+    background: radial-gradient(var(--green-on),var(--green-on-diffuse));
 }
 
 .btn {
