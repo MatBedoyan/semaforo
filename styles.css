@@ -75,14 +75,18 @@ body {
     cursor: pointer;
 }
 .start {
-    top: 640px;
-    left: 35px;
+    top: 615px;
+    left: 50px;
 }
 .offline {
-    top: 640px;
-    left: 110px;
+    top: 615px;
+    left: 180px;
+}
+.test {
+    top: 655px;
+    left: 50px;
 }
 .end {
-    top: 640px;
-    left: 182px;
+    top: 655px;
+    left: 180px;
 }
